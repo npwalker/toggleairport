@@ -35,6 +35,12 @@ function notify {
     osascript -e "display notification \"$1\" with title \"Wi-Fi Toggle\""
 }
 
+function disconnect_tunnelblick {
+    osascript -e "tell application \"Tunnelblick\"
+      disconnect all
+    end tell"
+}
+
 # Set default values
 prev_eth_status="Off"
 prev_air_status="Off"
@@ -72,9 +78,11 @@ if [ "$prev_eth_status" != "$eth_status" ]; then
     if [ "$eth_status" = "On" ]; then
         set_airport "Off"
         notify "Wired network detected. Turning Wi-Fi off."
+        disconnect_tunnelblick
     else
         set_airport "On"
         notify "No wired network detected. Turning Wi-Fi on."
+        disconnect_tunnelblick
     fi
 
 # If ethernet did not change
