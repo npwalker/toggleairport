@@ -77,11 +77,11 @@ if [ "$prev_eth_status" != "$eth_status" ]; then
 
     if [ "$eth_status" = "On" ]; then
         set_airport "Off"
-        notify "Wired network detected. Turning Wi-Fi off."
+        #notify "Wired network detected. Turning Wi-Fi off."
         disconnect_tunnelblick
     else
         set_airport "On"
-        notify "No wired network detected. Turning Wi-Fi on."
+        #notify "No wired network detected. Turning Wi-Fi on."
         disconnect_tunnelblick
     fi
 
